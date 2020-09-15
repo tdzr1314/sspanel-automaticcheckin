@@ -9,18 +9,19 @@
 sspanel自动每日签到脚本，基于项目https://github.com/zhjc1124/ssr_autocheckin修改
 """
 import requests
+import re
 
 requests.packages.urllib3.disable_warnings()
 
 class SspanelQd(object):
     def __init__(self):
         # 机场地址
-        self.base_url = 'https://*****/'
+        self.base_url = 'https://****.net'
         # 登录信息
-        self.email = ''
-        self.password = ''
+        self.email = '****@qq.com'
+        self.password = '****'
         # Server酱推送
-        self.sckey = ''
+        self.sckey = 'SCU109245Tf34928bcea84db0a*************'
 
     def checkin(self):
         email = self.email.split('@')
@@ -47,8 +48,16 @@ class SspanelQd(object):
         }
 
         response = session.post(self.base_url + '/user/checkin', headers=headers, verify=False)
-        print((response.json()).get('msg'))
-        return (response.json()).get('msg')
+        msg1 = (response.json()).get('msg')
+
+        info_url = self.base_url + '/user'
+        response = session.get(info_url, verify=False)
+        level = re.findall(r'\["Class", "(.*?)"],', response.text)[0]
+        day = re.findall(r'\["Class_Expire", "(.*)"],', response.text)[0]
+        rest = re.findall(r'\["Unused_Traffic", "(.*?)"]', response.text)[0]
+        msg = "- 今日签到信息："+str(msg1)+"\n- 用户等级："+str(level)+"\n- 到期时间："+str(day)+"\n- 剩余流量："+str(rest)
+        print(msg)
+        return msg
 
     # Server酱推送
     def server_send(self, msg):
@@ -56,7 +65,7 @@ class SspanelQd(object):
             return
         server_url = "https://sc.ftqq.com/" + str(self.sckey) + ".send"
         data = {
-                'text': msg,
+                'text': "签到完成，点击查看详细信息~",
                 'desp': msg
             }
         requests.post(server_url, data=data)
