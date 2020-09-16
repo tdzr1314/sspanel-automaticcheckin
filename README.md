@@ -1,9 +1,10 @@
 # sspanel-automaticcheckin
+基于项目https://github.com/zhjc1124/ssr_autocheckin 修改,支持Server酱微信推送
+
 sspanel自动签到脚本(腾讯云函数)适用于Theme by editXY
 其他主题无法使用按下图修改
 ![1](https://s1.ax1x.com/2020/09/16/w24Q9U.png)
 
-基于项目https://github.com/zhjc1124/ssr_autocheckin 修改,支持Server酱微信推送
 
 # 用法
 
