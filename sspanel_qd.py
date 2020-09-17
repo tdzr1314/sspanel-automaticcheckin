@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 """
-@Time ： 2020/9/15 9:52
+@Time ： 2020/9/17 9:52
 @Auth ： Ne-21
 @Des : sspanel自动每日签到脚本
 @File ：sspanel_qd.py
@@ -16,12 +15,14 @@ requests.packages.urllib3.disable_warnings()
 class SspanelQd(object):
     def __init__(self):
         # 机场地址
-        self.base_url = 'https://****.net'
+        self.base_url = 'https://*****.net'
         # 登录信息
-        self.email = '****@qq.com'
+        self.email = *********@qq.com'
         self.password = '****'
-        # Server酱推送
-        self.sckey = 'SCU109245Tf34928bcea84db0a*************'
+        # Server酱推送（可空）
+        self.sckey = ''
+        # 酷推qq推送（可空）
+        self.ktkey = ''
 
     def checkin(self):
         email = self.email.split('@')
@@ -48,16 +49,24 @@ class SspanelQd(object):
         }
 
         response = session.post(self.base_url + '/user/checkin', headers=headers, verify=False)
-        msg1 = (response.json()).get('msg')
+        msg = (response.json()).get('msg')
+        print(msg)
 
         info_url = self.base_url + '/user'
         response = session.get(info_url, verify=False)
-        level = re.findall(r'\["Class", "(.*?)"],', response.text)[0]
-        day = re.findall(r'\["Class_Expire", "(.*)"],', response.text)[0]
-        rest = re.findall(r'\["Unused_Traffic", "(.*?)"]', response.text)[0]
-        msg = "- 今日签到信息："+str(msg1)+"\n- 用户等级："+str(level)+"\n- 到期时间："+str(day)+"\n- 剩余流量："+str(rest)
-        print(msg)
-        return msg
+        """
+        以下只适配了editXY主题
+        """
+        try:
+            level = re.findall(r'\["Class", "(.*?)"],', response.text)[0]
+            day = re.findall(r'\["Class_Expire", "(.*)"],', response.text)[0]
+            rest = re.findall(r'\["Unused_Traffic", "(.*?)"]', response.text)[0]
+            msg = "- 今日签到信息："+str(msg)+"\n- 用户等级："+str(level)+"\n- 到期时间："+str(day)+"\n- 剩余流量："+str(rest)
+            print(msg)
+            return msg
+        except:
+            return msg
+
 
     # Server酱推送
     def server_send(self, msg):
@@ -70,10 +79,19 @@ class SspanelQd(object):
             }
         requests.post(server_url, data=data)
 
+    # 酷推QQ推送
+    def kt_send(self, msg):
+        if self.ktkey == '':
+            return
+        kt_url = 'https://push.xuthus.cc/send/'+str(self.ktkey)
+        data = ('签到完成，点击查看详细信息~\n'+str(msg)).encode("utf-8")
+        requests.post(kt_url, data=data)
+
 
     def main(self):
         msg = self.checkin()
         self.server_send(msg)
+        self.kt_send(msg)
 
 # 云函数入口
 def main_handler(event, context):
