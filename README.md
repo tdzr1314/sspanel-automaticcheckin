@@ -2,8 +2,12 @@
 基于项目https://github.com/zhjc1124/ssr_autocheckin 修改,支持Server酱微信推送
 
 sspanel自动签到脚本(腾讯云函数)
-~~适用于Theme by editXY
-其他主题无法使用按下图修改~~
+~~适用于Theme by editXY~~
+
+![wRqn2t.png](https://s1.ax1x.com/2020/09/17/wRqn2t.png)
+
+~~其他主题无法使用按下图修改~~
+
 问题已解决！
 其他主题适配请issues
 
