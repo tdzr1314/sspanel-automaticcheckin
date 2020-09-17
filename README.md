@@ -5,7 +5,9 @@ sspanel自动签到脚本(腾讯云函数)
 ~~适用于Theme by editXY
 其他主题无法使用按下图修改~~
 问题已解决！
-其他主题适配请issue
+其他主题适配请issues
+
+**Tip:此流量不是手机运营商流量，是科学上网的流量，懂得自然懂。机场地址填机场官网地址，不是填订阅的地址，注意这一点。有问题欢迎issues**
 
 
 # 用法
@@ -21,7 +23,10 @@ sspanel自动签到脚本(腾讯云函数)
         self.password = '****'
         # Server酱推送
         self.sckey = 'SCU109245Tf34928bcea84db0a*************'
+        # 酷推qq推送
+        self.ktkey = '**********'
   ```
   
-# 其他问题
-https://www.52pojie.cn/thread-1268795-1-1.html
+# 云函数运行截图
+![wRbQAJ.png](https://s1.ax1x.com/2020/09/17/wRbQAJ.png)
+
