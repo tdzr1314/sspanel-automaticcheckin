@@ -26,6 +26,7 @@ sspanel自动签到脚本(腾讯云函数)
         # 酷推qq推送
         self.ktkey = '**********'
   ```
+  3. 配置云函数定时触发
   
 # 云函数运行截图
 ![wRbQAJ.png](https://s1.ax1x.com/2020/09/17/wRbQAJ.png)
