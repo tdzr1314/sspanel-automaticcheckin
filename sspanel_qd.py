@@ -17,7 +17,7 @@ class SspanelQd(object):
         # 机场地址
         self.base_url = 'https://*****.net'
         # 登录信息
-        self.email = *********@qq.com'
+        self.email = '*********@qq.com'
         self.password = '****'
         # Server酱推送（可空）
         self.sckey = ''
