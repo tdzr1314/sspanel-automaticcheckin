@@ -1,5 +1,5 @@
 # sspanel-automaticcheckin
-基于项目https://github.com/zhjc1124/ssr_autocheckin 修改
+基于项目https://github.com/zhjc1124/ssr_autocheckin 修改，暂未解决登陆人机验证问题。
 
 sspanel自动签到脚本(腾讯云函数)
 ~~适用于Theme by editXY~~
