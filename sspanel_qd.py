@@ -17,10 +17,10 @@ class SspanelQd(object):
         # 机场地址
         self.base_url = 'http://vpn-3.xyz'
         # 登录信息
-        self.email = '376807007@qq.com'
-        self.password = 'zkl920918'
+        self.email = ''
+        self.password = ''
         # Server酱推送（可空）
-        self.sckey = 'SCU17474Td3826ae175e5fd21983772f601c33ec45a268139af481'
+        self.sckey = ''
         # 酷推qq推送（可空）
         self.ktkey = ''
 
