@@ -15,12 +15,12 @@ requests.packages.urllib3.disable_warnings()
 class SspanelQd(object):
     def __init__(self):
         # 机场地址
-        self.base_url = 'https://*****.net'
+        self.base_url = 'http://vpn-3.xyz'
         # 登录信息
-        self.email = '*********@qq.com'
-        self.password = '****'
+        self.email = '376807007@qq.com'
+        self.password = 'zkl920918'
         # Server酱推送（可空）
-        self.sckey = ''
+        self.sckey = 'SCU17474Td3826ae175e5fd21983772f601c33ec45a268139af481'
         # 酷推qq推送（可空）
         self.ktkey = ''
 
